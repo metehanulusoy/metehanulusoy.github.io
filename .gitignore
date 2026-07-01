@@ -1,0 +1,8 @@
+# keep the published site clean — research, exploration & dev scaffolding stay local
+research/
+variants/
+compare.html
+object-picker.html
+.claude/
+.vercelignore
+.DS_Store

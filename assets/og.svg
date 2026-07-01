@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="m" cx="82%" cy="12%" r="70%">
+      <stop offset="0" stop-color="#ff5a2c" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#0b0a09" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0a09"/>
+  <rect width="1200" height="630" fill="url(#m)"/>
+  <text x="80" y="118" font-family="'JetBrains Mono',monospace" font-size="26" fill="#ff5a2c">// computer engineering student · developer</text>
+  <text x="74" y="330" font-family="'Clash Display',system-ui,sans-serif" font-size="150" font-weight="700" fill="#f3eee6" letter-spacing="-4">Metehan</text>
+  <text x="74" y="470" font-family="'Clash Display',system-ui,sans-serif" font-size="150" font-weight="700" fill="#f3eee6" letter-spacing="-4">Ulusoy</text>
+  <rect x="80" y="520" width="150" height="10" rx="5" fill="#ff5a2c"/>
+  <text x="250" y="530" font-family="'JetBrains Mono',monospace" font-size="26" fill="#8a857c">Molten · WebGL · GSAP</text>
+</svg>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-perf="full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0a09" />
+
+  <!-- ====== EDIT: name / title / description ====== -->
+  <title>Metehan Ulusoy — Creative Developer</title>
+  <meta name="description" content="Metehan Ulusoy — Computer Engineering student & creative developer building fast, expressive, molten web experiences." />
+  <meta name="author" content="Metehan Ulusoy" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Metehan Ulusoy — Creative Developer" />
+  <meta property="og:description" content="Computer Engineering student & developer — web, motion, WebGL." />
+  <meta property="og:image" content="assets/og.svg" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- No-FOUC performance-tier boot -->
+  <script>
+    (function () {
+      try {
+        var h = document.documentElement;
+        var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var coarse = matchMedia('(pointer: coarse)').matches;
+        var saveData = (navigator.connection && navigator.connection.saveData) || false;
+        var lowCore = (navigator.hardwareConcurrency || 8) <= 4 && innerWidth < 700;
+        h.setAttribute('data-perf', (rm || saveData || lowCore) ? 'lite' : 'full');
+        h.setAttribute('data-pointer', coarse ? 'coarse' : 'fine');
+        var t = localStorage.getItem('theme'); if (t) h.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts: Clash Display (display) + General Sans (body) + Zodiak (serif italic accent) + JetBrains Mono -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500,400&f[]=general-sans@400,500,600&f[]=zodiak@400,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <!-- ============ PRELOADER (terminal boot) ============ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__log">
+        <span class="boot-line">&gt; init kernel<span class="ok"> ok</span></span>
+        <span class="boot-line">&gt; mount /portfolio<span class="ok"> ok</span></span>
+        <span class="boot-line">&gt; load shaders<span class="ok"> ok</span></span>
+        <span class="boot-line">&gt; calibrate motion<span class="ok"> ok</span></span>
+        <span class="boot-line">&gt; ready<span class="blink">_</span></span>
+      </div>
+      <div class="preloader__track"><span class="preloader__fill" id="preFill"></span></div>
+      <div class="preloader__meta">
+        <span class="preloader__count" id="preCount">000</span>
+        <span>METEHAN&nbsp;OS&nbsp;·&nbsp;v1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CUSTOM CURSOR (blend-difference dot + ring) ============ -->
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+
+  <!-- ============ GRAIN ============ -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" data-magnetic data-cursor="hide"><span class="nav__dot"></span> Metehan Ulusoy</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work" data-link><span>Work</span></a>
+      <a href="#about" data-link><span>About</span></a>
+      <a href="#path" data-link><span>Path</span></a>
+      <a href="#contact" data-link><span>Contact</span></a>
+    </nav>
+    <button class="nav__theme" id="themeToggle" aria-label="Toggle theme" data-cursor="hide" data-magnetic>
+      <span class="nav__theme-track"><span class="nav__theme-thumb"></span></span>
+    </button>
+  </header>
+
+  <main id="top" class="scroll-content">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__grade" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <p class="hero__eyebrow reveal-line"><span class="tag">// computer engineering student · developer</span></p>
+        <!-- EDIT: your name -->
+        <h1 class="hero__title" data-split-chars aria-label="Metehan Ulusoy">Metehan<br />Ulusoy</h1>
+        <div class="hero__sub reveal-line">
+          <span class="hero__lead">I build</span>
+          <span class="hero__rotator" id="roleRotator"></span>
+        </div>
+        <div class="hero__cta reveal-line">
+          <a href="#work" class="btn btn--primary" data-magnetic data-cursor="hide">
+            <span>View work</span>
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contact" class="btn btn--ghost" data-magnetic data-cursor="hide"><span>Get in touch</span></a>
+        </div>
+      </div>
+
+      <a href="#work" class="hero__scroll" aria-label="Scroll" data-cursor="hide"><span>scroll</span><span class="hero__scroll-line"></span></a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee">
+        <!-- EDIT: skills -->
+        <em>Python</em><i>✦</i><em>TypeScript</em><i>✦</i><em>Next.js</em><i>✦</i><em>React</em><i>✦</i><em>FastAPI</em><i>✦</i><em>LangChain</em><i>✦</i><em>RAG / LLMs</em><i>✦</i><em>n8n</em><i>✦</i><em>Supabase</em><i>✦</i><em>Machine Learning</em><i>✦</i><em>WebGL</em><i>✦</i>
+      </div>
+      <div class="marquee__track marquee__track--outline" id="marquee2">
+        <em>Creative Developer</em><i>✦</i><em>AI · LLM · RAG</em><i>✦</i><em>Full-stack</em><i>✦</i><em>Automation</em><i>✦</i><em>Motion &amp; WebGL</em><i>✦</i><em>Computer Engineering</em><i>✦</i>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about">
+      <div class="section-head" data-head>
+        <span class="section-num">01 — About</span>
+      </div>
+      <div class="about__grid">
+        <div class="about__bio">
+          <!-- EDIT: bio -->
+          <p class="about__big" data-split-lines>A Computer Engineering student who treats the browser as a canvas — shipping fast, accessible products and the occasional shader that has no right to run this smoothly.</p>
+          <p class="about__small" data-split-lines>I build across the stack — Next.js apps, LLM & RAG systems, ML pipelines and n8n automations — turning messy ideas into clean, maintainable products. I learn by building in public.</p>
+          <div class="about__meta reveal-line">
+            <div><span class="k">Based in</span><span class="v">Trabzon, Türkiye</span></div>
+            <div><span class="k">Studying</span><span class="v">Computer Engineering · 2nd year</span></div>
+            <div><span class="k">University</span><span class="v">Recep Tayyip Erdoğan · Rize</span></div>
+            <div><span class="k">Status</span><span class="v"><i class="pulse"></i> Open to internships</span></div>
+          </div>
+        </div>
+        <div class="about__stats" id="stats">
+          <div class="stat"><span class="stat__num" data-count="22" data-suffix="">0</span><span class="stat__label">GitHub repos</span></div>
+          <div class="stat"><span class="stat__num" data-count="6" data-suffix="">0</span><span class="stat__label">featured builds</span></div>
+          <div class="stat"><span class="stat__num" data-count="100" data-suffix="%">0</span><span class="stat__label">caffeine uptime</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE — interactive 3D ember blob ============ -->
+    <section class="feature" id="feature">
+      <canvas class="feature__canvas" id="blobCanvas" aria-hidden="true"></canvas>
+      <div class="feature__grade" aria-hidden="true"></div>
+      <div class="feature__inner">
+        <span class="section-num">02 — What I build</span>
+        <ul class="feature__list">
+          <li data-split-lines>AI &amp; LLM systems — RAG pipelines, agents and cost-aware gateways.</li>
+          <li data-split-lines>Full-stack web — Next.js apps on Supabase, real-time and fast.</li>
+          <li data-split-lines>Automation — n8n workflows and ML pipelines that run themselves.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ STATEMENT (scroll-driven word highlight) ============ -->
+    <section class="statement" id="statement">
+      <p class="statement__text" id="statementText">Design that moves, code that lasts. I care about the small stuff — the easing curve, the 60fps, the detail nobody notices but everybody feels.</p>
+    </section>
+
+    <!-- ============ WORK — pinned horizontal ============ -->
+    <section class="work" id="work">
+      <div class="work__pin" id="workPin">
+        <div class="work__head">
+          <span class="section-num">03 — Selected work</span>
+          <span class="work__hint">scroll →</span>
+        </div>
+        <div class="work__track" id="workTrack">
+          <!-- Real projects pulled from github.com/metehanulusoy -->
+          <a class="card" href="https://github.com/metehanulusoy/myanimelist" target="_blank" rel="noopener" data-tilt data-cursor="view">
+            <div class="card__media card__media--a"><span class="card__idx">01</span></div>
+            <div class="card__body"><h3>AnimeVerse</h3><p>Social anime-tracking platform — auth, lists, ratings and a live feed, on the Next.js 16 App Router + Supabase.</p><ul><li>Next.js 16</li><li>Supabase</li><li>TypeScript</li></ul></div>
+          </a>
+          <a class="card" href="https://metehanulusoy.github.io/awesome-n8n-workflows" target="_blank" rel="noopener" data-tilt data-cursor="view">
+            <div class="card__media card__media--b"><span class="card__idx">02</span></div>
+            <div class="card__body"><h3>Awesome n8n Workflows</h3><p>A curated library of 2,055 production-ready n8n automation templates — AI agents, CRM, e-commerce and Telegram bots.</p><ul><li>n8n</li><li>Automation</li><li>AI Agents</li></ul></div>
+          </a>
+          <a class="card" href="https://pdf-rag-app-metehanulusoy.streamlit.app" target="_blank" rel="noopener" data-tilt data-cursor="view">
+            <div class="card__media card__media--c"><span class="card__idx">03</span></div>
+            <div class="card__body"><h3>PDF RAG</h3><p>Ask questions about any PDF — a retrieval-augmented Q&amp;A app with LangChain, embeddings and OpenAI.</p><ul><li>Python</li><li>LangChain</li><li>RAG</li></ul></div>
+          </a>
+          <a class="card" href="https://github.com/metehanulusoy/llm-cost-autopilot" target="_blank" rel="noopener" data-tilt data-cursor="view">
+            <div class="card__media card__media--d"><span class="card__idx">04</span></div>
+            <div class="card__body"><h3>LLM Cost Autopilot</h3><p>Multi-provider LLM gateway that routes by learned complexity and auto-escalates on failure — 50%+ cheaper than an all-GPT-4o baseline.</p><ul><li>Python</li><li>FastAPI</li><li>LLM Ops</li></ul></div>
+          </a>
+          <a class="card" href="https://github.com/metehanulusoy/bist-ai-yatirim-asistani" target="_blank" rel="noopener" data-tilt data-cursor="view">
+            <div class="card__media card__media--e"><span class="card__idx">05</span></div>
+            <div class="card__body"><h3>BIST AI Assistant</h3><p>AI-driven BIST stock assistant — portfolio tracking, analysis and paper-trading in one Streamlit app.</p><ul><li>Python</li><li>Streamlit</li><li>AI</li></ul></div>
+          </a>
+          <a class="card" href="https://github.com/metehanulusoy/fraud-detection-system" target="_blank" rel="noopener" data-tilt data-cursor="view">
+            <div class="card__media card__media--f"><span class="card__idx">06</span></div>
+            <div class="card__body"><h3>Fraud Detection</h3><p>Real-time fraud scoring — an XGBoost + Isolation Forest ensemble behind a FastAPI endpoint with rule-based alerts.</p><ul><li>Python</li><li>XGBoost</li><li>ML</li></ul></div>
+          </a>
+          <div class="work__end"><a href="#contact" class="work__end-link" data-magnetic data-cursor="hide">Let's talk →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO — scroll color inversion ============ -->
+    <section class="invert" id="invert">
+      <p class="invert__text">I care about the small stuff — the easing curve, the sixty frames a second, the detail nobody notices but everybody feels.</p>
+    </section>
+
+    <!-- ============ PATH / TIMELINE ============ -->
+    <section class="path" id="path">
+      <div class="section-head" data-head><span class="section-num">04 — The path</span></div>
+      <ol class="timeline" id="timeline">
+        <svg class="timeline__line" id="timelineLine" preserveAspectRatio="none" aria-hidden="true"><path d="M1 0 V 2000" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+        <!-- EDIT: your timeline -->
+        <li class="timeline__item"><span class="timeline__year">now</span><h3>2nd-year Computer Engineering</h3><p>At Recep Tayyip Erdoğan University in Rize — shipping AI, full-stack and automation side-projects alongside the coursework.</p></li>
+        <li class="timeline__item"><span class="timeline__year">2024</span><h3>Started university &amp; building in public</h3><p>Began Computer Engineering and started shipping real projects on GitHub — LLM tools, ML pipelines, automations.</p></li>
+        <li class="timeline__item"><span class="timeline__year">2023</span><h3>First lines of code</h3><p>Fell down the developer rabbit hole; never came back up.</p></li>
+      </ol>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <canvas class="contact__constellation" id="constellation" aria-hidden="true"></canvas>
+      <div class="contact__inner">
+        <span class="section-num">05 — Contact</span>
+        <div class="contact__stage">
+          <canvas class="contact__particles" id="nameCanvas" aria-hidden="true"></canvas>
+          <h2 class="contact__title" data-split-chars aria-label="Let's build.">Let's<br />build.</h2>
+        </div>
+        <a class="contact__handle" href="https://github.com/metehanulusoy" target="_blank" rel="noopener" data-magnetic data-cursor="hide">@metehanulusoy</a>
+        <div class="contact__socials">
+          <!-- EDIT: add real LinkedIn / X -->
+          <a href="https://github.com/metehanulusoy" target="_blank" rel="noopener" data-cursor="hide" data-magnetic>GitHub</a>
+          <a href="https://www.linkedin.com/in/metehan-ulusoy-1806b6223" target="_blank" rel="noopener" data-cursor="hide" data-magnetic>LinkedIn</a>
+          <a role="link" aria-disabled="true" data-cursor="hide" data-magnetic style="cursor:default">X / Twitter</a>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer__marquee" aria-hidden="true"><span id="footMarquee"></span></div>
+        <div class="footer__row">
+          <span>© <span id="year"></span> Metehan Ulusoy</span>
+          <span>Molten build · Lenis · GSAP · WebGL</span>
+          <a href="#top" data-cursor="hide" data-magnetic>Back to top ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CDN UMD globals — file:// friendly, degrade gracefully -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
