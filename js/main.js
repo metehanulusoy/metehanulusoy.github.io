@@ -210,8 +210,6 @@
     if (m && hasGSAP) { m.innerHTML += m.innerHTML; gsap.to(m, { x: -m.scrollWidth / 2, duration: 24, ease: 'none', repeat: -1 }); }
     var m2 = $('#marquee2');
     if (m2 && hasGSAP) { m2.innerHTML += m2.innerHTML; gsap.fromTo(m2, { x: -m2.scrollWidth / 2 }, { x: 0, duration: 30, ease: 'none', repeat: -1 }); }
-    var fm = $('#footMarquee');
-    if (fm) { fm.textContent = 'METEHAN ULUSOY — '.repeat(6); if (hasGSAP) gsap.to(fm, { x: -fm.scrollWidth / 2, duration: 32, ease: 'none', repeat: -1 }); }
   }
 
   /* 12. ROTATOR */
@@ -236,12 +234,6 @@
     if (lenis) lenis.on('scroll', onScroll); addEventListener('scroll', onScroll, { passive: true }); onScroll();
   }
 
-  /* 14. THEME */
-  function initTheme() {
-    var b = $('#themeToggle'); if (!b) return;
-    b.addEventListener('click', function () { var n = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; html.setAttribute('data-theme', n); try { localStorage.setItem('theme', n); } catch (e) {} if (window.__heroTheme) window.__heroTheme(n); });
-  }
-
   /* 15. ANCHORS */
   function initAnchors() {
     $$('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function (e) { var id = a.getAttribute('href'); if (id.length < 2) return; var t = $(id); if (!t) return; e.preventDefault(); if (lenis) lenis.scrollTo(t, { duration: 1.2 }); else t.scrollIntoView({ behavior: 'smooth' }); }); });
@@ -250,9 +242,9 @@
   /* 16. VELOCITY SKEW — marquees lean with scroll velocity (awwwards touch) */
   function initVelocitySkew() {
     if (!hasGSAP || !FULL) return;
-    var m = $('#marquee'), fm = $('#footMarquee'); if (!m && !fm) return;
-    var sm = m ? gsap.quickSetter(m, 'skewX', 'deg') : null;
-    var sf = fm ? gsap.quickSetter(fm, 'skewX', 'deg') : null;
+    var m = $('#marquee'); if (!m) return;
+    var sm = gsap.quickSetter(m, 'skewX', 'deg');
+    var sf = null;
     var cur = 0;
     gsap.ticker.add(function () {
       var v = (window.__lenis && window.__lenis.velocity) ? window.__lenis.velocity : 0;
@@ -347,7 +339,7 @@
   }
 
   function boot() {
-    initSmooth(); initReveals(); initStatement(); initCounters(); initWork(); initTilt(); initTimeline(); initMarquees(); initRotator(); initNav(); initTheme(); initAnchors(); initCursor(); initVelocitySkew(); initScramble(); initConstellation(); initInvert(); loadWebGL(); loadParticles(); initHeroVideo();
+    initSmooth(); initReveals(); initStatement(); initCounters(); initWork(); initTilt(); initTimeline(); initMarquees(); initRotator(); initNav(); initAnchors(); initCursor(); initVelocitySkew(); initScramble(); initConstellation(); initInvert(); loadWebGL(); loadParticles(); initHeroVideo();
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
     runPreloader(function () { if (window.__heroIn) window.__heroIn(); if (hasST) ScrollTrigger.refresh(); });
     if (hasST) addEventListener('load', function () { ScrollTrigger.refresh(); });

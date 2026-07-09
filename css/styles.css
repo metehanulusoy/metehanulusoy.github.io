@@ -305,8 +305,7 @@ html[data-perf='lite'] .hero__video, html[data-perf='lite'] .hero__scan { displa
 .hardware__sub { color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.6; max-width: 44ch; margin-bottom: 1.6rem; }
 .hardware__hint { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; color: var(--accent); }
 .hardware__hint svg { color: var(--accent); }
-.hardware__frame { position: relative; border: 1px solid var(--line-strong); border-radius: 16px; overflow: hidden; background: #050805; aspect-ratio: 4 / 3; box-shadow: 0 40px 90px -40px color-mix(in srgb, var(--accent) 45%, transparent); }
-.hardware__frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: 16px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent), inset 0 0 90px -24px color-mix(in srgb, var(--accent) 35%, transparent); }
+.hardware__frame { position: relative; aspect-ratio: 4 / 3; background: radial-gradient(58% 52% at 50% 52%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 72%); }
 .hardware__canvas { width: 100%; height: 100%; display: block; }
 .hardware__credit { margin-top: 0.9rem; font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
 .hardware__credit a { color: color-mix(in srgb, var(--accent) 80%, var(--ink)); text-decoration: underline; text-underline-offset: 2px; }

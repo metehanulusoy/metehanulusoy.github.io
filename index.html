@@ -27,7 +27,6 @@
         var lowCore = (navigator.hardwareConcurrency || 8) <= 4 && innerWidth < 700;
         h.setAttribute('data-perf', (rm || saveData || lowCore) ? 'lite' : 'full');
         h.setAttribute('data-pointer', coarse ? 'coarse' : 'fine');
-        var t = localStorage.getItem('theme'); if (t) h.setAttribute('data-theme', t);
       } catch (e) {}
     })();
   </script>
@@ -76,9 +75,6 @@
       <a href="#path" data-link><span>Path</span></a>
       <a href="#contact" data-link><span>Contact</span></a>
     </nav>
-    <button class="nav__theme" id="themeToggle" aria-label="Toggle theme" data-cursor="hide" data-magnetic>
-      <span class="nav__theme-track"><span class="nav__theme-thumb"></span></span>
-    </button>
   </header>
 
   <main id="top" class="scroll-content">
@@ -237,10 +233,10 @@
         <h2 class="gallery__title" data-split-lines>The machine, up close.</h2>
         <div class="gallery__grid">
           <figure class="gtile gtile--a"><img loading="lazy" alt="Macro of a green printed circuit board with surface-mount chips" src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1000&q=80&auto=format&fit=crop" /></figure>
-          <figure class="gtile gtile--b"><img loading="lazy" alt="Close-up of a dark blue circuit board with gold traces" src="https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--b"><img loading="lazy" alt="Source code on a dark screen — a Python module" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1000&q=80&auto=format&fit=crop" /></figure>
           <figure class="gtile gtile--c"><img loading="lazy" alt="Server room with network cables and status lights" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop" /></figure>
-          <figure class="gtile gtile--d"><img loading="lazy" alt="Teal circuit board pattern with repeated pads" src="https://images.unsplash.com/photo-1631376178637-392efc9e356b?w=800&q=80&auto=format&fit=crop" /></figure>
-          <figure class="gtile gtile--e"><img loading="lazy" alt="Blue motherboard with capacitors and controller chips" src="https://images.unsplash.com/photo-1651340550839-3b295d930048?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--d"><img loading="lazy" alt="A code editor with a file tree and syntax-highlighted source" src="https://images.unsplash.com/photo-1619410283995-43d9134e7656?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--e"><img loading="lazy" alt="Colourful syntax-highlighted code in an editor" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80&auto=format&fit=crop" /></figure>
           <figure class="gtile gtile--f"><img loading="lazy" alt="Data center hallway lined with server racks" src="https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?w=1000&q=80&auto=format&fit=crop" /></figure>
         </div>
         <p class="gallery__credit">Photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — free to use.</p>
@@ -277,7 +273,6 @@
         </div>
       </div>
       <div class="footer">
-        <div class="footer__marquee" aria-hidden="true"><span id="footMarquee"></span></div>
         <div class="footer__row">
           <span>© <span id="year"></span> Metehan Ulusoy</span>
           <span>Terminal build · Lenis · GSAP · WebGL</span>
