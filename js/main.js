@@ -98,7 +98,9 @@
       el.addEventListener('mouseenter', function () { if (t === 'view') { cur.classList.add('is-view'); if (label) label.textContent = 'View'; } else cur.classList.add('is-hover'); });
       el.addEventListener('mouseleave', function () { cur.classList.remove('is-view', 'is-hover'); if (label) label.textContent = ''; });
     });
-    $$('a, button').forEach(function (el) { if (el.hasAttribute('data-cursor')) return; el.addEventListener('mouseenter', function () { cur.classList.add('is-hover'); }); el.addEventListener('mouseleave', function () { cur.classList.remove('is-hover'); }); });
+    // delegated hover for a/button so lazily-injected controls (lab theaters) also get pointer affordance
+    document.addEventListener('mouseover', function (e) { var t = e.target.closest ? e.target.closest('a, button') : null; if (t && !t.hasAttribute('data-cursor')) cur.classList.add('is-hover'); });
+    document.addEventListener('mouseout', function (e) { var t = e.target.closest ? e.target.closest('a, button') : null; if (t && !t.hasAttribute('data-cursor')) cur.classList.remove('is-hover'); });
     $$('[data-magnetic]').forEach(function (el) {
       var s = parseFloat(el.getAttribute('data-magnetic')) || 0.35;
       var qx = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' }), qy = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' });
@@ -281,16 +283,37 @@
 
   /* 18. LAZY WEBGL (hero shader + 3D blob), particles, constellation, inversion */
   function loadScript(src, cb) { var el = document.createElement('script'); el.src = src; el.onload = cb; document.body.appendChild(el); }
+  /* run cb once el gets within ~600px of the viewport (fallback: immediately) */
+  function whenNear(el, cb) {
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { cb(); return; }
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); cb(); } }, { rootMargin: '600px 0px' });
+    io.observe(el);
+  }
   function loadWebGL() {
     if (!FULL) return;
-    var hero = $('#heroCanvas'), blobC = $('#blobCanvas');
-    if (!hero && !blobC) return;
+    var hero = $('#heroCanvas'), blobC = $('#blobCanvas'), chipC = $('#chipCanvas');
+    if (!hero && !blobC && !chipC) return;
     var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
     s.onload = function () {
       if (hero) loadScript('js/hero.js', function () { if (window.initHero) window.initHero(hero); });
       if (blobC) loadScript('js/blob.js', function () { if (window.initBlob) window.initBlob(blobC); });
+      // chip is the heaviest scene and sits ~6 viewports down — build it only as #silicon nears (avoids boot-time shader jank)
+      if (chipC) whenNear(chipC, function () { loadScript('js/chip.js', function () { if (window.initChip) window.initChip(chipC); }); });
     };
     document.body.appendChild(s);
+  }
+  /* lab theaters (code + algorithms) — fetched only when the section approaches */
+  function loadLab() {
+    if (!FULL) return;
+    var ct = $('#codeTheater'), at = $('#algoTheater');
+    if (!ct && !at) return;
+    whenNear(ct || at, function () {
+      var pending = 0;
+      function done() { if (--pending <= 0 && hasST) ScrollTrigger.refresh(); }  // injected DOM changed page height — re-measure triggers below
+      if (ct) { pending++; loadScript('js/code-theater.js', function () { if (window.initCodeTheater) window.initCodeTheater(ct); done(); }); }
+      if (at) { pending++; loadScript('js/algo-theater.js', function () { if (window.initAlgoTheater) window.initAlgoTheater(at); done(); }); }
+    });
   }
   function loadParticles() {
     if (!FULL) return;
@@ -324,7 +347,7 @@
   }
 
   function boot() {
-    initSmooth(); initReveals(); initStatement(); initCounters(); initWork(); initTilt(); initTimeline(); initMarquees(); initRotator(); initNav(); initTheme(); initAnchors(); initCursor(); initVelocitySkew(); initScramble(); initConstellation(); initInvert(); loadWebGL(); loadParticles();
+    initSmooth(); initReveals(); initStatement(); initCounters(); initWork(); initTilt(); initTimeline(); initMarquees(); initRotator(); initNav(); initTheme(); initAnchors(); initCursor(); initVelocitySkew(); initScramble(); initConstellation(); initInvert(); loadWebGL(); loadParticles(); loadLab();
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
     runPreloader(function () { if (window.__heroIn) window.__heroIn(); if (hasST) ScrollTrigger.refresh(); });
     if (hasST) addEventListener('load', function () { ScrollTrigger.refresh(); });
