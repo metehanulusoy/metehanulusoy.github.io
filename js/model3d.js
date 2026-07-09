@@ -16,17 +16,21 @@
     catch (e) { return; }
     renderer.setClearColor(0x000000, 0);                 // transparent — dark frame shows through
     if ('outputEncoding' in renderer) renderer.outputEncoding = THREE.sRGBEncoding;
+    if ('toneMapping' in renderer) { renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0.2, 0.9, 4.2);
+    var camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+    camera.position.set(0, 2.7, 3.9);                    // look down on the board so its component face shows
 
-    /* ===== matrix-green lighting rig ===== */
-    scene.add(new THREE.AmbientLight(0x1f3a2a, 1.15));
-    var key = new THREE.DirectionalLight(0x8fffb0, 2.3); key.position.set(3, 5, 4); scene.add(key);
-    var rim = new THREE.DirectionalLight(0x00ff41, 1.7); rim.position.set(-4, 1.5, -3); scene.add(rim);
-    var fill = new THREE.PointLight(0x39ff8f, 0.9, 22); fill.position.set(0, -3, 3.5); scene.add(fill);
+    /* ===== lighting: soft studio env (real reflections) + neutral key + green matrix rim ===== */
+    if (THREE.RoomEnvironment && THREE.PMREMGenerator) {
+      try { var pmrem = new THREE.PMREMGenerator(renderer); scene.environment = pmrem.fromScene(new THREE.RoomEnvironment(), 0.04).texture; } catch (e) {}
+    }
+    scene.add(new THREE.AmbientLight(0x2a3f34, 0.7));
+    var key = new THREE.DirectionalLight(0xffffff, 1.7); key.position.set(4, 6, 5); scene.add(key);
+    var rim = new THREE.DirectionalLight(0x00ff5a, 2.1); rim.position.set(-5, 1.5, -4); scene.add(rim);   // green matrix edge light
+    var fill = new THREE.PointLight(0x66ffa0, 0.5, 26); fill.position.set(-2, -3, 3); scene.add(fill);
 
     var group = new THREE.Group(); scene.add(group);
 

@@ -289,7 +289,9 @@
           if (started) return; started = true;
           loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js', function () {
             loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js', function () {
-              loadScript('js/model3d.js', function () { if (window.initModel3D) window.initModel3D(modelC, modelC.getAttribute('data-model')); });
+              loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js', function () {
+                loadScript('js/model3d.js', function () { if (window.initModel3D) window.initModel3D(modelC, modelC.getAttribute('data-model')); });
+              });
             });
           });
         }
