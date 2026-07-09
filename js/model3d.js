@@ -12,7 +12,7 @@
     if (canvas.__m3d) return; canvas.__m3d = true;   // guard: one viewer per canvas
 
     var renderer;
-    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); }
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, preserveDrawingBuffer: true }); }
     catch (e) { return; }
     renderer.setClearColor(0x000000, 0);                 // transparent — dark frame shows through
     if ('outputEncoding' in renderer) renderer.outputEncoding = THREE.sRGBEncoding;
@@ -68,25 +68,22 @@
     var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(resize, 180); });
     resize();
 
-    /* ===== run / pause (offscreen + hidden tab) ===== */
-    var raf = null, onScreen = true;
+    /* ===== run / pause — only pause on a hidden tab, render continuously while visible.
+       A transparent canvas goes blank the instant the loop stops, so for one small model
+       it's safer + cheaper to keep drawing than to gate on an offscreen observer (which
+       left the frame empty). preserveDrawingBuffer also keeps the last frame painted. ===== */
+    var raf = null;
     function frame() {
-      if (!onScreen || document.hidden) { raf = null; return; }
+      if (document.hidden) { raf = null; return; }
       if (controls) controls.update();
       renderer.render(scene, camera);
       raf = requestAnimationFrame(frame);
     }
-    function run() { if (!raf && onScreen && !document.hidden) raf = requestAnimationFrame(frame); }
+    function run() { if (!raf && !document.hidden) raf = requestAnimationFrame(frame); }
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) { if (raf) { cancelAnimationFrame(raf); raf = null; } } else run();
     });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        onScreen = es[0].isIntersecting;
-        if (onScreen) run(); else if (raf) { cancelAnimationFrame(raf); raf = null; }
-      }, { threshold: 0.02 }).observe(canvas);
-    }
-    for (var i = 0; i < 3; i++) renderer.render(scene, camera);   // paint before first intersect
+    renderer.render(scene, camera);
     run();
   };
 })();
