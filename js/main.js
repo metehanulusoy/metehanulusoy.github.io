@@ -217,7 +217,7 @@
   /* 12. ROTATOR */
   function initRotator() {
     var el = $('#roleRotator'); if (!el) return;
-    var roles = ['the web', 'AI agents', 'LLM tools', 'automations', 'molten shaders'];
+    var roles = ['the web', 'AI agents', 'LLM tools', 'automations', 'GPU shaders'];
     if (!FULL) { el.textContent = roles[0]; return; }
     var ri = 0, ci = 0, del = false;
     (function tick() {
@@ -283,37 +283,19 @@
 
   /* 18. LAZY WEBGL (hero shader + 3D blob), particles, constellation, inversion */
   function loadScript(src, cb) { var el = document.createElement('script'); el.src = src; el.onload = cb; document.body.appendChild(el); }
-  /* run cb once el gets within ~600px of the viewport (fallback: immediately) */
-  function whenNear(el, cb) {
-    if (!el) return;
-    if (!('IntersectionObserver' in window)) { cb(); return; }
-    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); cb(); } }, { rootMargin: '600px 0px' });
-    io.observe(el);
-  }
   function loadWebGL() {
     if (!FULL) return;
-    var hero = $('#heroCanvas'), blobC = $('#blobCanvas'), chipC = $('#chipCanvas');
-    if (!hero && !blobC && !chipC) return;
+    var blobC = $('#blobCanvas');
+    if (!blobC) return;
     var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.onload = function () {
-      if (hero) loadScript('js/hero.js', function () { if (window.initHero) window.initHero(hero); });
-      if (blobC) loadScript('js/blob.js', function () { if (window.initBlob) window.initBlob(blobC); });
-      // chip is the heaviest scene and sits ~6 viewports down — build it only as #silicon nears (avoids boot-time shader jank)
-      if (chipC) whenNear(chipC, function () { loadScript('js/chip.js', function () { if (window.initChip) window.initChip(chipC); }); });
-    };
+    s.onload = function () { loadScript('js/blob.js', function () { if (window.initBlob) window.initBlob(blobC); }); };
     document.body.appendChild(s);
   }
-  /* lab theaters (code + algorithms) — fetched only when the section approaches */
-  function loadLab() {
-    if (!FULL) return;
-    var ct = $('#codeTheater'), at = $('#algoTheater');
-    if (!ct && !at) return;
-    whenNear(ct || at, function () {
-      var pending = 0;
-      function done() { if (--pending <= 0 && hasST) ScrollTrigger.refresh(); }  // injected DOM changed page height — re-measure triggers below
-      if (ct) { pending++; loadScript('js/code-theater.js', function () { if (window.initCodeTheater) window.initCodeTheater(ct); done(); }); }
-      if (at) { pending++; loadScript('js/algo-theater.js', function () { if (window.initAlgoTheater) window.initAlgoTheater(at); done(); }); }
-    });
+  /* hero background video (matrix code rain) — pause on lite tier / hidden tab to save power & data */
+  function initHeroVideo() {
+    var v = $('#heroVideo'); if (!v) return;
+    if (!FULL) { try { v.pause(); v.removeAttribute('autoplay'); } catch (e) {} v.style.display = 'none'; return; }
+    document.addEventListener('visibilitychange', function () { try { if (document.hidden) v.pause(); else v.play(); } catch (e) {} });
   }
   function loadParticles() {
     if (!FULL) return;
@@ -329,9 +311,9 @@
       if (!run) return;
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < nodes.length; i++) { var a = nodes[i]; a.x += a.vx; a.y += a.vy; if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1; }
-      ctx.strokeStyle = 'rgba(255,90,44,0.55)';
+      ctx.strokeStyle = 'rgba(0,255,65,0.55)';
       for (var i2 = 0; i2 < nodes.length; i2++) for (var j = i2 + 1; j < nodes.length; j++) { var b = nodes[j], dx = nodes[i2].x - b.x, dy = nodes[i2].y - b.y, d = Math.sqrt(dx * dx + dy * dy); if (d < 135) { ctx.globalAlpha = (1 - d / 135) * 0.5; ctx.beginPath(); ctx.moveTo(nodes[i2].x, nodes[i2].y); ctx.lineTo(b.x, b.y); ctx.stroke(); } }
-      ctx.globalAlpha = 1; ctx.fillStyle = '#ff5a2c';
+      ctx.globalAlpha = 1; ctx.fillStyle = '#00ff41';
       for (var k = 0; k < nodes.length; k++) { ctx.beginPath(); ctx.arc(nodes[k].x, nodes[k].y, 1.4, 0, 6.283); ctx.fill(); }
       raf = requestAnimationFrame(step);
     }
@@ -343,11 +325,11 @@
     var el = $('.invert'), tx = $('.invert__text', el || document);
     if (!el || !tx) return;
     tx.innerHTML = tx.innerHTML.replace('sixty frames a second', '<span class="hot">sixty frames a second</span>');
-    gsap.fromTo(el, { backgroundColor: '#0b0a09', color: '#f3eee6' }, { backgroundColor: '#f3eee6', color: '#0b0a09', ease: 'none', scrollTrigger: { trigger: el, start: 'top 65%', end: 'top 12%', scrub: true } });
+    gsap.fromTo(el, { backgroundColor: '#060806', color: '#eaf5ec' }, { backgroundColor: '#eaf5ec', color: '#060806', ease: 'none', scrollTrigger: { trigger: el, start: 'top 65%', end: 'top 12%', scrub: true } });
   }
 
   function boot() {
-    initSmooth(); initReveals(); initStatement(); initCounters(); initWork(); initTilt(); initTimeline(); initMarquees(); initRotator(); initNav(); initTheme(); initAnchors(); initCursor(); initVelocitySkew(); initScramble(); initConstellation(); initInvert(); loadWebGL(); loadParticles(); loadLab();
+    initSmooth(); initReveals(); initStatement(); initCounters(); initWork(); initTilt(); initTimeline(); initMarquees(); initRotator(); initNav(); initTheme(); initAnchors(); initCursor(); initVelocitySkew(); initScramble(); initConstellation(); initInvert(); loadWebGL(); loadParticles(); initHeroVideo();
     var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
     runPreloader(function () { if (window.__heroIn) window.__heroIn(); if (hasST) ScrollTrigger.refresh(); });
     if (hasST) addEventListener('load', function () { ScrollTrigger.refresh(); });

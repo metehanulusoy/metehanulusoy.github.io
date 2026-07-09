@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="theme-color" content="#0b0a09" />
+  <meta name="theme-color" content="#060806" />
 
   <!-- ====== EDIT: name / title / description ====== -->
   <title>Metehan Ulusoy — Creative Developer</title>
-  <meta name="description" content="Metehan Ulusoy — Computer Engineering student & creative developer building fast, expressive, molten web experiences." />
+  <meta name="description" content="Metehan Ulusoy — Computer Engineering student & creative developer building fast, expressive web experiences." />
   <meta name="author" content="Metehan Ulusoy" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Metehan Ulusoy — Creative Developer" />
@@ -85,7 +85,10 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
-      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/video/matrix-rain.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__scan" aria-hidden="true"></div>
       <div class="hero__grade" aria-hidden="true"></div>
 
       <div class="hero__inner">
@@ -206,43 +209,41 @@
       <p class="invert__text">I care about the small stuff — the easing curve, the sixty frames a second, the detail nobody notices but everybody feels.</p>
     </section>
 
-    <!-- ============ LAB — code & algorithms, running live ============ -->
-    <section class="lab" id="lab">
-      <div class="section-head" data-head>
-        <span class="section-num">04 — The lab</span>
-      </div>
-      <div class="lab__inner">
-        <h2 class="lab__title" data-split-lines>Code, running live.</h2>
-        <p class="lab__sub reveal-line">No video files here — everything below is being typed, executed and drawn by code, right now, in your browser.</p>
-        <div class="lab__grid">
-          <div class="ct" id="codeTheater" aria-label="Live coding demo — code from my real projects being typed and run">
-            <!-- lite-tier / no-JS fallback -->
-            <pre class="lab__fallback"><code># rag_pipeline.py
-docs = retriever.search(query, k=4)
-answer = llm.invoke(prompt(query, docs))
-print(answer)  # grounded, cited, fast</code></pre>
+    <!-- ============ HARDWARE — real interactive 3D model (Sketchfab, CC-BY) ============ -->
+    <section class="hardware" id="hardware">
+      <div class="section-head" data-head><span class="section-num">04 — Hardware</span></div>
+      <div class="hardware__inner">
+        <div class="hardware__text">
+          <h2 class="hardware__title" data-split-lines>Down to the metal.</h2>
+          <p class="hardware__sub reveal-line">Software is only half the story — computer engineering means knowing the machine underneath. Here's a real motherboard you can turn over in your hands.</p>
+          <span class="hardware__hint reveal-line">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".45"/></svg>
+            drag to rotate · scroll to zoom
+          </span>
+        </div>
+        <div class="hardware__stage">
+          <div class="hardware__frame">
+            <iframe title="MotherBoard + Components — interactive 3D model" class="hardware__embed" src="https://sketchfab.com/models/3bc94057328243d4b341a55f59160f8a/embed?autospin=0.2&autostart=1&ui_theme=dark&ui_infos=0&ui_controls=1&ui_stop=0&ui_watermark=0&transparent=1&dnt=1" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen loading="lazy"></iframe>
           </div>
-          <div class="at" id="algoTheater" aria-label="Algorithm visualizer — quicksort, A* pathfinding and neural networks animated live">
-            <pre class="lab__fallback"><code>quicksort · O(n log n)
-A* pathfinding · f = g + h
-neural net · forward pass</code></pre>
-          </div>
+          <p class="hardware__credit">3D model: <a href="https://sketchfab.com/3d-models/motherboard-components-3bc94057328243d4b341a55f59160f8a" target="_blank" rel="noopener">“MotherBoard + Components”</a> by <a href="https://sketchfab.com/DanielCardonaArt" target="_blank" rel="noopener">Daniel Cardona</a> — CC BY 4.0</p>
         </div>
       </div>
     </section>
 
-    <!-- ============ SILICON — interactive 3D circuit board ============ -->
-    <section class="silicon" id="silicon">
-      <canvas class="silicon__canvas" id="chipCanvas" aria-hidden="true"></canvas>
-      <div class="silicon__grade" aria-hidden="true"></div>
-      <div class="silicon__inner">
-        <span class="section-num">05 — Silicon</span>
-        <h2 class="silicon__title" data-split-lines>Down to the metal.</h2>
-        <p class="silicon__sub" data-split-lines>Software is only half the story — computer engineering means knowing the machine underneath. Every glowing trace is a signal finding its way home.</p>
-        <span class="silicon__hint reveal-line">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".45"/></svg>
-          drag the board to rotate
-        </span>
+    <!-- ============ SIGNALS — real hardware photography (Unsplash) ============ -->
+    <section class="gallery" id="gallery">
+      <div class="section-head" data-head><span class="section-num">05 — Signals</span></div>
+      <div class="gallery__inner">
+        <h2 class="gallery__title" data-split-lines>The machine, up close.</h2>
+        <div class="gallery__grid">
+          <figure class="gtile gtile--a"><img loading="lazy" alt="Macro of a green printed circuit board with surface-mount chips" src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1000&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--b"><img loading="lazy" alt="Close-up of a dark blue circuit board with gold traces" src="https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--c"><img loading="lazy" alt="Server room with network cables and status lights" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--d"><img loading="lazy" alt="Teal circuit board pattern with repeated pads" src="https://images.unsplash.com/photo-1631376178637-392efc9e356b?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--e"><img loading="lazy" alt="Blue motherboard with capacitors and controller chips" src="https://images.unsplash.com/photo-1651340550839-3b295d930048?w=800&q=80&auto=format&fit=crop" /></figure>
+          <figure class="gtile gtile--f"><img loading="lazy" alt="Data center hallway lined with server racks" src="https://images.unsplash.com/photo-1580106815433-a5b1d1d53d85?w=1000&q=80&auto=format&fit=crop" /></figure>
+        </div>
+        <p class="gallery__credit">Photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> — free to use.</p>
       </div>
     </section>
 
@@ -279,7 +280,7 @@ neural net · forward pass</code></pre>
         <div class="footer__marquee" aria-hidden="true"><span id="footMarquee"></span></div>
         <div class="footer__row">
           <span>© <span id="year"></span> Metehan Ulusoy</span>
-          <span>Molten build · Lenis · GSAP · WebGL</span>
+          <span>Terminal build · Lenis · GSAP · WebGL</span>
           <a href="#top" data-cursor="hide" data-magnetic>Back to top ↑</a>
         </div>
       </div>

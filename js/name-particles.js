@@ -36,7 +36,7 @@ window.initNameParticles = function (canvas, line1, line2) {
 
   function step() {
     if (!running) return;
-    ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#ff5a2c';
+    ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#00ff41';
     var settle = 0.16, damp = 0.82, r2 = REPEL * REPEL;
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];

@@ -53,7 +53,7 @@ window.initBlob = function (canvas) {
   var frag = [
     'varying float vG;',
     'void main(){float d=distance(gl_PointCoord,vec2(0.5));if(d>0.5)discard;',
-    'float a=smoothstep(0.5,0.05,d);vec3 c=mix(vec3(1.0,0.35,0.17),vec3(1.0,0.7,0.35),vG);',
+    'float a=smoothstep(0.5,0.05,d);vec3 c=mix(vec3(0.0,1.0,0.26),vec3(0.42,1.0,0.63),vG);',
     'gl_FragColor=vec4(c,a);}'
   ].join('\n');
   var globe = new THREE.Points(geo, new THREE.ShaderMaterial({
