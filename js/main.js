@@ -277,10 +277,29 @@
   function loadScript(src, cb) { var el = document.createElement('script'); el.src = src; el.onload = cb; document.body.appendChild(el); }
   function loadWebGL() {
     if (!FULL) return;
-    var blobC = $('#blobCanvas');
-    if (!blobC) return;
+    var blobC = $('#blobCanvas'), modelC = $('#modelCanvas');
+    if (!blobC && !modelC) return;
     var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    s.onload = function () { loadScript('js/blob.js', function () { if (window.initBlob) window.initBlob(blobC); }); };
+    s.onload = function () {
+      if (blobC) loadScript('js/blob.js', function () { if (window.initBlob) window.initBlob(blobC); });
+      if (modelC) {
+        var started = false;
+        function loadModel() {
+          if (started) return; started = true;
+          loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js', function () {
+            loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js', function () {
+              loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js', function () {
+                loadScript('js/model3d.js', function () { if (window.initModel3D) window.initModel3D(modelC, modelC.getAttribute('data-model')); });
+              });
+            });
+          });
+        }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); loadModel(); } }, { rootMargin: '700px 0px' });
+          io.observe(modelC);
+        } else loadModel();
+      }
+    };
     document.body.appendChild(s);
   }
   /* hero background video (matrix code rain) — pause on lite tier / hidden tab to save power & data */
