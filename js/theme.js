@@ -61,4 +61,17 @@
       updateThemeColor();
     });
   });
+
+  // A page restored from the back/forward cache picks up a theme that was
+  // changed on another page in the meantime.
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+
+    const theme = readSavedTheme();
+    if (theme) root.classList.toggle("dark", theme === "dark");
+
+    const button = document.querySelector("[data-theme-toggle]");
+    if (button) updateButton(button);
+    updateThemeColor();
+  });
 })();

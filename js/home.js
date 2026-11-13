@@ -36,11 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   listenForFavoriteClicks(list, () => featured);
 
-  // Redraw the cards (or the error message) in the new language.
+  // Redraw the cards (or the loading / error message) in the new language.
   document.addEventListener("languagechange", () => {
     if (loadState === "error") {
       showStatus(status, "error", projectsErrorMessage(), loadFeatured);
-    } else if (loadState === "ready") {
+    } else if (loadState === "loading") {
+      showStatus(status, "loading", translate("status.loadingProjects"));
+    } else {
       renderCards(false);
     }
   });

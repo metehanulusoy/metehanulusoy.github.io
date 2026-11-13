@@ -31,7 +31,14 @@ function setUpCuratedProjects() {
   const favoritesOnlyBox = document.querySelector("[data-favorites-only]");
   if (!list || !status || !resultCount || !searchInput || !favoritesOnlyBox) return;
 
-  const filters = { query: "", category: "all", favoritesOnly: false };
+  // Start from what the controls show: some browsers keep a typed search or a
+  // ticked box after a reload.
+  const pressedFilter = document.querySelector('.chip[data-filter][aria-pressed="true"]');
+  const filters = {
+    query: normalizeForSearch(searchInput.value.trim()),
+    category: pressedFilter ? pressedFilter.dataset.filter : "all",
+    favoritesOnly: favoritesOnlyBox.checked,
+  };
   let projects = [];
   let loadState = "loading"; // "loading", "ready" or "error"
 
@@ -126,6 +133,8 @@ function setUpCuratedProjects() {
   document.addEventListener("languagechange", () => {
     if (loadState === "error") {
       showStatus(status, "error", projectsErrorMessage(), loadProjects);
+    } else if (loadState === "loading") {
+      showStatus(status, "loading", translate("status.loadingProjects"));
     } else {
       renderProjects(false);
     }
@@ -210,6 +219,8 @@ function setUpGitHubRepos() {
   document.addEventListener("languagechange", () => {
     if (loadState === "error") {
       showStatus(status, "error", describeRepoError(lastError), loadRepos);
+    } else if (loadState === "loading") {
+      showStatus(status, "loading", translate("github.loading"));
     } else {
       renderRepos();
     }

@@ -315,7 +315,10 @@ function updateLanguageButton() {
   const target = currentLanguage === "tr" ? "en" : "tr";
   button.textContent = target.toUpperCase();
   button.lang = target;
-  button.setAttribute("aria-label", target === "en" ? "Switch to English" : "Türkçeye geç");
+  // The name starts with the visible "EN" / "TR", so people using voice
+  // control can say what they see on the button.
+  const label = target === "en" ? "Switch to English" : "Türkçeye geç";
+  button.setAttribute("aria-label", `${target.toUpperCase()}, ${label}`);
 }
 
 function setLanguage(language) {
@@ -342,4 +345,19 @@ document.addEventListener("DOMContentLoaded", () => {
       setLanguage(currentLanguage === "tr" ? "en" : "tr");
     });
   }
+});
+
+// When the browser shows a page again from its back/forward cache, the page
+// keeps the state it had when it was left. If the language was changed on
+// another page in the meantime, it is applied here, and the other scripts
+// redraw what they created when they hear "languagechange". The event is sent
+// a moment later so their own "pageshow" handlers (favourites) run first.
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+
+  currentLanguage = readSavedLanguage();
+  translatePage();
+  setTimeout(() => {
+    document.dispatchEvent(new CustomEvent("languagechange", { detail: { language: currentLanguage } }));
+  }, 0);
 });

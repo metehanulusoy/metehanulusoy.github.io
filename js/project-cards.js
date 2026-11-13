@@ -64,6 +64,12 @@ function isFavorite(id) {
   return favoriteIds.includes(id);
 }
 
+// Favourites may have changed on another page while this one waited in the
+// browser's back/forward cache.
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) favoriteIds = readFavorites();
+});
+
 /** Adds the project to the favourites or removes it; returns true if it is now a favourite. */
 function toggleFavorite(id) {
   if (isFavorite(id)) {
