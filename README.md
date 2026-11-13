@@ -19,7 +19,7 @@ Kim olduğumu, neler üzerinde çalıştığımı ve yaptığım projeleri tek b
 | İletişim | `contact.html` | İletişim kanalları ve doğrulamalı iletişim formu |
 | 404 | `404.html` | GitHub Pages'in bulunamayan adresler için gösterdiği sayfa |
 
-## Öne çıkan özellikler
+## Asgari gereksinimlerin ötesinde yapılanlar
 
 - **İki dil:** Sağ üstteki TR/EN düğmesi sayfadaki bütün metinleri değiştirir; tercih `localStorage` içinde saklanır.
 - **Koyu ve açık tema:** İlk açılışta işletim sisteminin tercihine uyar, düğmeyle değiştirilebilir; tercih `localStorage` içinde saklanır.
@@ -27,6 +27,9 @@ Kim olduğumu, neler üzerinde çalıştığımı ve yaptığım projeleri tek b
 - **GitHub'dan canlı liste:** Depolar sayfa açılırken GitHub API'den çekilir. Yükleniyor ve hata durumları ekranda gösterilir, hata olursa "Tekrar dene" düğmesi çıkar. Saatlik istek sınırına takılmamak için yanıt 10 dakika `sessionStorage` içinde tutulur.
 - **İletişim formu:** JavaScript ile doğrulama, her alanın hemen altında kendi hata mesajı, yazdıkça kaydedilen taslak (`localStorage`, 24 saat sonra silinir) ve başarı mesajı. Sitenin sunucusu olmadığı için geçerli mesaj, ziyaretçinin e-posta uygulamasında gönderilmeye hazır hâlde açılır (`mailto:`); e-posta uygulaması olmayan bilgisayarlar için "Metni kopyala" düğmesi vardır.
 - **Erişilebilirlik:** "İçeriğe geç" bağlantısı, klavyeyle tam kullanım, görünür odak çerçevesi, `aria-expanded`, `aria-pressed` ve `aria-invalid` nitelikleri, ayrıca "azaltılmış hareket" tercihine uyan animasyonlar.
+- **Güvenlik:** Her sayfada içerik güvenlik politikası (Content-Security-Policy) var; dış bağlantılar `rel="noopener noreferrer"` ile açılıyor; GitHub'dan gelen bağlantılara yalnızca `github.com` adresine gidiyorsa izin veriliyor.
+- **JavaScript kapalıyken de okunur:** Bütün metinler HTML'de duruyor; menü bağlantıları görünür kalıyor, JavaScript isteyen düğmeler gizleniyor ve `<noscript>` notu nedenini açıklıyor.
+- **Ayrıntılar:** Özel 404 sayfası, yüklenirken iskelet kartlar, `Intl` ile dile göre tarih ve tekil/çoğul biçimleri, yazdırma stilleri, dört kırılma noktası (30, 40, 48 ve 64rem) ve Göktürkçe işaret için siteyle birlikte gelen yazı tipi.
 
 ## Gereksinimler ve karşılandıkları yerler
 
@@ -35,31 +38,31 @@ Kim olduğumu, neler üzerinde çalıştığımı ve yaptığım projeleri tek b
 | HTML | En az 3 ayrı sayfa | [`index.html`](index.html), [`about.html`](about.html), [`projects.html`](projects.html), [`contact.html`](contact.html) (ayrıca `404.html`) |
 | HTML | Tüm sayfalarda ortak gezinme menüsü | [`index.html`, 35. satır](index.html#L35); [`about.html`, 28. satır](about.html#L28); [`projects.html`, 31. satır](projects.html#L31); [`contact.html`, 29. satır](contact.html#L29) |
 | HTML | Anlamsal etiketler: `header`, `nav`, `main`, `section`, `footer` | [`index.html`, 29. satır](index.html#L29), [`index.html`, 35. satır](index.html#L35), [`index.html`, 58. satır](index.html#L58), [`index.html`, 59. satır](index.html#L59), [`index.html`, 122. satır](index.html#L122) |
-| HTML | Anlamsal etiketler: `article` | [`about.html`, 94. satır](about.html#L94); proje kartları da `article`: [`js/project-cards.js`, 81. satır](js/project-cards.js#L81) |
+| HTML | Anlamsal etiketler: `article` | [`about.html`, 94. satır](about.html#L94); proje kartları da `article`: [`js/project-cards.js`, 87. satır](js/project-cards.js#L87) |
 | HTML | `meta viewport` | [`index.html`, 5. satır](index.html#L5); [`about.html`, 5. satır](about.html#L5); [`projects.html`, 5. satır](projects.html#L5); [`contact.html`, 5. satır](contact.html#L5) |
 | HTML | Doğrulama nitelikli form (`required`, `type="email"`, `minlength`) | [`contact.html`, 98. satır](contact.html#L98), [`contact.html`, 103. satır](contact.html#L103), [`contact.html`, 122. satır](contact.html#L122) |
-| HTML | Görsellerde anlamlı alt metni | statik görsel [`about.html`, 150. satır](about.html#L150); kart görsellerinin metinleri [`data/projects.json`, 27. satır](data/projects.json#L27), görsele yazılması [`js/project-cards.js`, 93. satır](js/project-cards.js#L93) |
+| HTML | Görsellerde anlamlı alt metni | statik görsel [`about.html`, 150. satır](about.html#L150); kart görsellerinin metinleri [`data/projects.json`, 27. satır](data/projects.json#L27), görsele yazılması [`js/project-cards.js`, 99. satır](js/project-cards.js#L99) |
 | CSS | Tek bir harici stil dosyası | [`css/style.css`](css/style.css); bağlantı [`index.html`, 18. satır](index.html#L18) |
 | CSS | Flexbox | [`css/style.css`, 110. satır](css/style.css#L110) |
-| CSS | CSS Grid | [`css/style.css`, 779. satır](css/style.css#L779), [`css/style.css`, 1749. satır](css/style.css#L1749) |
-| CSS | En az iki kırılma noktası (telefon, tablet, masaüstü) | [`css/style.css`, 1709. satır](css/style.css#L1709) (tablet), [`css/style.css`, 459. satır](css/style.css#L459) (menü), [`css/style.css`, 1732. satır](css/style.css#L1732) (masaüstü) |
+| CSS | CSS Grid | [`css/style.css`, 780. satır](css/style.css#L780), [`css/style.css`, 1751. satır](css/style.css#L1751) |
+| CSS | En az iki kırılma noktası (telefon, tablet, masaüstü) | [`css/style.css`, 1711. satır](css/style.css#L1711) (tablet), [`css/style.css`, 459. satır](css/style.css#L459) (menü), [`css/style.css`, 1734. satır](css/style.css#L1734) (masaüstü) |
 | CSS | Mobilde açılıp kapanan menü | CSS [`css/style.css`, 351. satır](css/style.css#L351); düğme [`index.html`, 49. satır](index.html#L49); JS [`js/main.js`, 51. satır](js/main.js#L51) |
 | CSS | CSS değişkenleri (`:root`) | [`css/style.css`, 20. satır](css/style.css#L20); koyu tema [`css/style.css`, 74. satır](css/style.css#L74) |
-| CSS | Geçiş (transition) ve animasyon | [`css/style.css`, 117. satır](css/style.css#L117), [`css/style.css`, 1659. satır](css/style.css#L1659) |
-| CSS | `:hover` ve `:focus` durumları | [`css/style.css`, 533. satır](css/style.css#L533), [`css/style.css`, 1453. satır](css/style.css#L1453), [`css/style.css`, 171. satır](css/style.css#L171) |
+| CSS | Geçiş (transition) ve animasyon | [`css/style.css`, 117. satır](css/style.css#L117), [`css/style.css`, 1661. satır](css/style.css#L1661) |
+| CSS | `:hover` ve `:focus` durumları | [`css/style.css`, 533. satır](css/style.css#L533), [`css/style.css`, 1454. satır](css/style.css#L1454), [`css/style.css`, 171. satır](css/style.css#L171) |
 | JS: DOM | Harici `.js` dosyaları, satır içi olay yok | [`index.html`, 21. satır](index.html#L21); HTML'de hiç `onclick` ya da `<script>` bloğu yok |
-| JS: DOM | `addEventListener` ile en az 3 farklı olay | click [`js/main.js`, 59. satır](js/main.js#L59), input [`js/projects.js`, 90. satır](js/projects.js#L90), submit [`js/contact.js`, 169. satır](js/contact.js#L169), change [`js/projects.js`, 103. satır](js/projects.js#L103), keydown [`js/main.js`, 68. satır](js/main.js#L68), scroll [`js/main.js`, 113. satır](js/main.js#L113) |
-| JS: DOM | JSON verisinden `createElement` ile dinamik öğeler | [`js/helpers.js`, 10. satır](js/helpers.js#L10), kart [`js/project-cards.js`, 80. satır](js/project-cards.js#L80), depo satırı [`js/projects.js`, 279. satır](js/projects.js#L279) |
-| JS: DOM | Arama ve filtreleme | [`js/projects.js`, 55. satır](js/projects.js#L55), arama [`js/projects.js`, 90. satır](js/projects.js#L90), dil süzgeci [`js/projects.js`, 208. satır](js/projects.js#L208) |
+| JS: DOM | `addEventListener` ile en az 3 farklı olay | click [`js/main.js`, 59. satır](js/main.js#L59), input [`js/projects.js`, 97. satır](js/projects.js#L97), submit [`js/contact.js`, 174. satır](js/contact.js#L174), change [`js/projects.js`, 110. satır](js/projects.js#L110), keydown [`js/main.js`, 68. satır](js/main.js#L68), scroll [`js/main.js`, 113. satır](js/main.js#L113) |
+| JS: DOM | JSON verisinden `createElement` ile dinamik öğeler | [`js/helpers.js`, 10. satır](js/helpers.js#L10), kart [`js/project-cards.js`, 86. satır](js/project-cards.js#L86), depo satırı [`js/projects.js`, 290. satır](js/projects.js#L290) |
+| JS: DOM | Arama ve filtreleme | [`js/projects.js`, 62. satır](js/projects.js#L62), arama [`js/projects.js`, 97. satır](js/projects.js#L97), dil süzgeci [`js/projects.js`, 217. satır](js/projects.js#L217) |
 | JS: DOM | `classList` ile görünüm değiştirme | karanlık mod [`js/theme.js`, 58. satır](js/theme.js#L58), menü [`js/main.js`, 51. satır](js/main.js#L51) |
 | JS: veri | `fetch` + `async/await` (proje içindeki JSON) | [`js/project-cards.js`, 16. satır](js/project-cards.js#L16), [`js/project-cards.js`, 17. satır](js/project-cards.js#L17) |
-| JS: veri | `fetch` + `async/await` (herkese açık API) | [`js/projects.js`, 221. satır](js/projects.js#L221), [`js/projects.js`, 225. satır](js/projects.js#L225) |
-| JS: veri | Yükleniyor ve hata durumları ekranda | [`js/helpers.js`, 42. satır](js/helpers.js#L42); yükleniyor [`js/projects.js`, 162. satır](js/projects.js#L162); hata [`js/projects.js`, 173. satır](js/projects.js#L173) |
-| JS: veri | `localStorage` ile bilgi saklama | tema [`js/theme.js`, 27. satır](js/theme.js#L27), dil [`js/i18n.js`, 326. satır](js/i18n.js#L326), favoriler [`js/project-cards.js`, 57. satır](js/project-cards.js#L57), form taslağı [`js/contact.js`, 106. satır](js/contact.js#L106) |
-| JS: form | Gönderimde JS ile doğrulama (`preventDefault`) | [`js/contact.js`, 170. satır](js/contact.js#L170), kurallar [`js/contact.js`, 44. satır](js/contact.js#L44) |
-| JS: form | Hata mesajı ilgili alanın yanında | [`contact.html`, 99. satır](contact.html#L99), [`js/contact.js`, 70. satır](js/contact.js#L70) |
-| JS: form | Başarılı gönderimde geri bildirim | [`contact.html`, 137. satır](contact.html#L137), [`js/contact.js`, 186. satır](js/contact.js#L186) |
-| Güvenlik | Kullanıcı girdisi `textContent` ile yazılır | [`js/contact.js`, 183. satır](js/contact.js#L183); projede `innerHTML` hiç kullanılmadı |
+| JS: veri | `fetch` + `async/await` (herkese açık API) | [`js/projects.js`, 232. satır](js/projects.js#L232), [`js/projects.js`, 236. satır](js/projects.js#L236) |
+| JS: veri | Yükleniyor ve hata durumları ekranda | [`js/helpers.js`, 42. satır](js/helpers.js#L42); yükleniyor [`js/projects.js`, 171. satır](js/projects.js#L171); hata [`js/projects.js`, 182. satır](js/projects.js#L182) |
+| JS: veri | `localStorage` ile bilgi saklama | tema [`js/theme.js`, 27. satır](js/theme.js#L27), dil [`js/i18n.js`, 329. satır](js/i18n.js#L329), favoriler [`js/project-cards.js`, 57. satır](js/project-cards.js#L57), form taslağı [`js/contact.js`, 107. satır](js/contact.js#L107) |
+| JS: form | Gönderimde JS ile doğrulama (`preventDefault`) | [`js/contact.js`, 175. satır](js/contact.js#L175), kurallar [`js/contact.js`, 45. satır](js/contact.js#L45) |
+| JS: form | Hata mesajı ilgili alanın yanında | [`contact.html`, 99. satır](contact.html#L99), [`js/contact.js`, 71. satır](js/contact.js#L71) |
+| JS: form | Başarılı gönderimde geri bildirim | [`contact.html`, 137. satır](contact.html#L137), [`js/contact.js`, 192. satır](js/contact.js#L192) |
+| Güvenlik | Kullanıcı girdisi `textContent` ile yazılır | [`js/contact.js`, 188. satır](js/contact.js#L188); projede `innerHTML` hiç kullanılmadı |
 | Güvenlik | API anahtarı yok | GitHub API anahtarsız kullanılıyor: [`js/projects.js`, 11. satır](js/projects.js#L11) |
 | Güvenlik | Ek: içerik güvenlik politikası (CSP) | [`index.html`, 6. satır](index.html#L6) |
 | Kod yönetimi | Düzenli klasör yapısı | `css/`, `js/`, `img/`, `data/`, `fonts/` |
@@ -105,7 +108,7 @@ Kim olduğumu, neler üzerinde çalıştığımı ve yaptığım projeleri tek b
 | Ana sayfa | ![Ana sayfa, masaüstü](img/screenshots/home-desktop.jpg) | ![Ana sayfa, telefon](img/screenshots/home-mobile.jpg) |
 | Hakkımda | ![Hakkımda sayfasındaki zaman çizelgesi, masaüstü](img/screenshots/about-desktop.jpg) | ![Hakkımda, telefon](img/screenshots/about-mobile.jpg) |
 | Projeler | ![Projeler: arama, süzgeç ve kartlar, masaüstü](img/screenshots/projects-desktop.jpg) | ![Projeler, telefon](img/screenshots/projects-mobile.jpg) |
-| GitHub listesi | ![GitHub API'den gelen depo listesi, masaüstü](img/screenshots/github-desktop.jpg) | ![Açılmış mobil menü](img/screenshots/menu-mobile.jpg) |
+| GitHub listesi ve açık mobil menü | ![GitHub API'den gelen depo listesi, masaüstü](img/screenshots/github-desktop.jpg) | ![Açılmış mobil menü, telefon](img/screenshots/menu-mobile.jpg) |
 | İletişim (boş gönderimde hata mesajları) | ![İletişim formu hata mesajlarıyla, masaüstü](img/screenshots/contact-desktop.jpg) | ![İletişim formu hata mesajlarıyla, telefon](img/screenshots/contact-mobile.jpg) |
 | Açık tema, İngilizce | ![Ana sayfa açık temada ve İngilizce, masaüstü](img/screenshots/home-light-en-desktop.jpg) | ![Projeler açık temada ve İngilizce, telefon](img/screenshots/projects-light-en-mobile.jpg) |
 
@@ -121,5 +124,5 @@ Kim olduğumu, neler üzerinde çalıştığımı ve yaptığım projeleri tek b
 
 - Site içeriği: kendi önceki portfolyom (https://metehan-portfolio.vercel.app).
 - Yazı tipleri: Google Fonts üzerinden Bricolage Grotesque, Instrument Sans ve Martian Mono; Göktürkçe işaret için Noto Sans Old Turkic (SIL Open Font License 1.1, [`fonts/OFL.txt`](fonts/OFL.txt)).
-- İkonlar: elle çizilmiş satır içi SVG'ler.
+- İkonlar: ikon kütüphanesi kullanılmadan doğrudan HTML'e yazılmış SVG'ler; favori yıldızı JavaScript ile oluşturuluyor.
 - Kod: MIT lisansı ([`LICENSE`](LICENSE)).
