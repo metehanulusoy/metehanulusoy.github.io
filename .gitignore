@@ -1,0 +1,10 @@
+# Personal notes, not part of the site
+plans/
+
+# Operating system and editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Submission archive (uploaded to Google Classroom, not committed)
+*.zip
