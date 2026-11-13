@@ -1,0 +1,320 @@
+[
+  {
+    "id": "metehan-portfolio",
+    "category": "web",
+    "featured": false,
+    "date": "2026-08",
+    "title": { "tr": "Önceki portfolyom", "en": "Previous portfolio" },
+    "summary": {
+      "tr": "Next.js ve WebGL ile yazdığım ilk portfolyo; giriş bölümündeki parçacık alanı, GitHub'daki gerçek kod hacminden üretiliyor.",
+      "en": "My earlier portfolio, built with Next.js and WebGL; the particle field in its opening section is generated from the real volume of code on GitHub."
+    },
+    "stack": ["Next.js", "Three.js", "GSAP", "TypeScript"],
+    "live": "https://metehan-portfolio.vercel.app"
+  },
+  {
+    "id": "tarim-konseptleri",
+    "category": "web",
+    "featured": true,
+    "date": "2026-07",
+    "title": { "tr": "Tarım Konseptleri", "en": "Tarım Konseptleri" },
+    "summary": {
+      "tr": "Üç yön, tek temel: her biri kendi kimliğine sahip üç tarım sitesini tek kod tabanından yayınlayan bir monorepo.",
+      "en": "Three directions, one foundation: a monorepo that ships three agriculture sites, each with its own identity."
+    },
+    "stack": ["Next.js", "Tailwind", "GSAP", "Three.js"],
+    "image": "img/projects/tarim-konseptleri.jpg",
+    "imageAlt": {
+      "tr": "Tarım Konseptleri seçim ekranı: Filiz, Ekinova ve Harman adlı üç konsept kartı",
+      "en": "The Tarım Konseptleri chooser with three concept cards: Filiz, Ekinova and Harman"
+    },
+    "live": "https://tarim-konseptleri.vercel.app"
+  },
+  {
+    "id": "streamly",
+    "category": "web",
+    "featured": false,
+    "date": "2026-06",
+    "title": { "tr": "Streamly", "en": "Streamly" },
+    "summary": {
+      "tr": "Sıfırdan kurulmuş bir yayın platformu arayüzü: raflar, sıralamalar, bölüm akışları ve tamamen kurgusal bir katalog.",
+      "en": "A streaming interface rebuilt from scratch: rails, rankings, episode feeds and an entirely fictional catalogue."
+    },
+    "stack": ["Next.js", "React", "Tailwind"],
+    "image": "img/projects/streamly.jpg",
+    "imageAlt": {
+      "tr": "Streamly ana sayfası: trend diziler rafı ve kanallara göre süzülen güncel bölümler listesi",
+      "en": "The Streamly home page with a trending series rail and a list of recent episodes filtered by channel"
+    },
+    "live": "https://streamly-self.vercel.app"
+  },
+  {
+    "id": "ceng-arsiv",
+    "category": "web",
+    "featured": true,
+    "date": "2026-06",
+    "title": { "tr": "CENG Arşiv", "en": "CENG Arşiv" },
+    "summary": {
+      "tr": "Bütün bölümün ders notları ve çıkmış sınavları; grup sohbetlerine dağılmak yerine derse ve yıla göre raflanmış hâlde.",
+      "en": "A course-note and past-exam archive for a whole department, filed by course and by year instead of scattered across group chats."
+    },
+    "stack": ["Next.js", "Supabase", "Tailwind", "TypeScript"],
+    "image": "img/projects/ceng-arsiv.jpg",
+    "imageAlt": {
+      "tr": "CENG Arşiv ana sayfası: “Aradığın her şey tek yerde, sınav arşivi” başlığı ve “Hemen başla” düğmesi",
+      "en": "The CENG Arşiv home page with the headline “Everything you are looking for in one place: the exam archive” and a “Get started” button"
+    },
+    "live": "https://ceng-arsiv.vercel.app"
+  },
+  {
+    "id": "bist-ai-yatirim-asistani",
+    "category": "product",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "BIST Yatırım Asistanı", "en": "BIST Investment Assistant" },
+    "summary": {
+      "tr": "Borsa İstanbul için yapay zekâ destekli portföy takibi, analiz ve sanal işlem.",
+      "en": "AI-assisted portfolio tracking, analysis and paper trading for Borsa İstanbul."
+    },
+    "stack": ["Streamlit", "Python", "Pandas"],
+    "repo": "https://github.com/metehanulusoy/bist-ai-yatirim-asistani"
+  },
+  {
+    "id": "myanimelist",
+    "category": "web",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "AnimeVerse", "en": "AnimeVerse" },
+    "summary": {
+      "tr": "Listeler, puanlar ve arkadaş akışıyla sosyal bir anime takip platformu.",
+      "en": "A social anime tracking platform: lists, ratings and a friend feed."
+    },
+    "stack": ["Next.js", "Supabase", "TypeScript", "PostgreSQL"],
+    "repo": "https://github.com/metehanulusoy/myanimelist"
+  },
+  {
+    "id": "semantic-caching",
+    "category": "services",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "Anlamsal Önbellek Vekili", "en": "Semantic Caching Proxy" },
+    "summary": {
+      "tr": "Aynı soru farklı sözcüklerle sorulduğunda da onu tanıyan, OpenAI uyumlu bir önbellek.",
+      "en": "A drop-in OpenAI-compatible cache that recognises the same question asked in different words."
+    },
+    "stack": ["FastAPI", "Redis", "Embeddings", "Prometheus", "Docker"],
+    "repo": "https://github.com/metehanulusoy/semantic-caching"
+  },
+  {
+    "id": "rag-hybrid-search",
+    "category": "services",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "Hibrit Aramalı RAG Hattı", "en": "Hybrid-Search RAG Pipeline" },
+    "summary": {
+      "tr": "Yoğun ve BM25 çift dizini, RRF birleştirmesi, yeniden sıralama ve emin olmadığında “bilmiyorum” diyen bir kapı.",
+      "en": "A dense and BM25 dual index, RRF fusion, reranking, and a gate that knows when to say “I don't know”."
+    },
+    "stack": ["FastAPI", "BM25", "Embeddings", "Cross-Encoder", "Docker"],
+    "repo": "https://github.com/metehanulusoy/rag-hybrid-search"
+  },
+  {
+    "id": "llm-arbitration",
+    "category": "services",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "Çok Ajanlı Hakemlik", "en": "Multi-Agent Arbitration" },
+    "summary": {
+      "tr": "Üç farklı sağlayıcıda üç uzman eleştirmen; sonuç, güven puanı taşıyan tek bir karar.",
+      "en": "Three specialist critics on three different providers, resolving to one confidence-scored verdict."
+    },
+    "stack": ["LangGraph", "FastAPI", "OpenAI", "Anthropic", "Ollama"],
+    "repo": "https://github.com/metehanulusoy/llm-arbitration"
+  },
+  {
+    "id": "self-healing-docs",
+    "category": "services",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "Kendini Onaran Dokümanlar", "en": "Self-Healing Docs" },
+    "summary": {
+      "tr": "Kodun eskittiği dokümanları bulup düzeltme isteğini (PR) kendisi açan bir GitHub Action.",
+      "en": "A GitHub Action that finds the docs your code just made stale, then opens the fix pull request."
+    },
+    "stack": ["GitHub Actions", "Embeddings", "Python", "Docker"],
+    "repo": "https://github.com/metehanulusoy/self-healing-docs"
+  },
+  {
+    "id": "failure-forensics",
+    "category": "services",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "Failure Forensics", "en": "Failure Forensics" },
+    "summary": {
+      "tr": "Çok adımlı bir yapay zekâ hattında asıl hangi adımın bozulduğunu söyleyen gözlemlenebilirlik aracı.",
+      "en": "Observability that tells you which step of a multi-step AI pipeline actually broke."
+    },
+    "stack": ["OpenTelemetry", "FastAPI", "Streamlit", "Docker"],
+    "repo": "https://github.com/metehanulusoy/failure-forensics"
+  },
+  {
+    "id": "llm-cost-autopilot",
+    "category": "services",
+    "featured": true,
+    "date": "2026-05",
+    "title": { "tr": "LLM Cost Autopilot", "en": "LLM Cost Autopilot" },
+    "summary": {
+      "tr": "Her isteği ona yetecek en ucuz modele yönlendiren bir ağ geçidi: aynı kalite, yarı yarıya daha düşük maliyet.",
+      "en": "A gateway that routes every request to the cheapest model that can handle it: same quality, at half the cost."
+    },
+    "stack": ["FastAPI", "scikit-learn", "OpenAI", "Anthropic", "Ollama"],
+    "repo": "https://github.com/metehanulusoy/llm-cost-autopilot"
+  },
+  {
+    "id": "model-regression-detection",
+    "category": "services",
+    "featured": false,
+    "date": "2026-05",
+    "title": { "tr": "LLM Gerileme Kapısı", "en": "LLM Regression Gate" },
+    "summary": {
+      "tr": "Her istem ya da model değişikliğinde kalite düşüşünü, kullanıcılar görmeden yakalayan bir CI kapısı.",
+      "en": "A CI gate that catches quality drops on every prompt or model change, before users see them."
+    },
+    "stack": ["GitHub Actions", "pytest", "OpenAI", "Python"],
+    "repo": "https://github.com/metehanulusoy/model-regression-detection"
+  },
+  {
+    "id": "jarvis",
+    "category": "product",
+    "featured": false,
+    "date": "2026-04",
+    "title": { "tr": "Jarvis — Yerel Yapay Zekâ Asistanı", "en": "Jarvis — Local AI Assistant" },
+    "summary": {
+      "tr": "Tamamen kendi donanımında çalışan, buluta hiçbir şey göndermeyen kişisel bir asistan.",
+      "en": "A personal assistant that runs entirely on your own hardware and sends nothing to the cloud."
+    },
+    "stack": ["Ollama", "RAG", "Python", "Whisper"],
+    "repo": "https://github.com/metehanulusoy/jarvis"
+  },
+  {
+    "id": "credit-risk-scoring",
+    "category": "ml",
+    "featured": false,
+    "date": "2026-04",
+    "title": { "tr": "Kredi Riski Skorlama", "en": "Credit Risk Scoring" },
+    "summary": {
+      "tr": "Bankaların gerçekten kullandığı ölçütlerle (KS, Gini, PSI) uçtan uca temerrüt tahmini.",
+      "en": "End-to-end default prediction with the metrics banks actually use: KS, Gini and PSI."
+    },
+    "stack": ["XGBoost", "SHAP", "FastAPI", "Docker"],
+    "repo": "https://github.com/metehanulusoy/credit-risk-scoring"
+  },
+  {
+    "id": "fraud-detection-system",
+    "category": "ml",
+    "featured": false,
+    "date": "2026-04",
+    "title": { "tr": "Gerçek Zamanlı Dolandırıcılık Tespiti", "en": "Real-Time Fraud Detection" },
+    "summary": {
+      "tr": "Gözetimli ve gözetimsiz modelleri birleştiren bir topluluk: bilinen örüntüleri de hiç görülmemişleri de yakalar.",
+      "en": "A supervised and unsupervised ensemble that catches known patterns and never-seen-before ones."
+    },
+    "stack": ["XGBoost", "Isolation Forest", "FastAPI", "Docker"],
+    "repo": "https://github.com/metehanulusoy/fraud-detection-system"
+  },
+  {
+    "id": "banking-chatbot-rag",
+    "category": "ml",
+    "featured": false,
+    "date": "2026-04",
+    "title": { "tr": "Bankacılık RAG Asistanı", "en": "Banking RAG Assistant" },
+    "summary": {
+      "tr": "Türkçe doğal dil işleme, güvenlik korkulukları ve BDDK'ya uygun uyarı sistemiyle bir sık sorulan sorular botu.",
+      "en": "A FAQ bot with Turkish NLP, guardrails and a disclaimer system that follows the BDDK rules."
+    },
+    "stack": ["LangChain", "ChromaDB", "Turkish NLP", "Docker"],
+    "repo": "https://github.com/metehanulusoy/banking-chatbot-rag"
+  },
+  {
+    "id": "price-tracker-bot",
+    "category": "tooling",
+    "featured": false,
+    "date": "2026-03",
+    "title": { "tr": "Fiyat Takip Botu", "en": "Price Tracker Bot" },
+    "summary": {
+      "tr": "Trendyol ve Amazon'u izler, fiyat düştüğü anda Telegram'dan haber verir.",
+      "en": "Watches Trendyol and Amazon, and pings Telegram the moment a price drops."
+    },
+    "stack": ["Python", "Telegram Bot API", "Scraping"],
+    "repo": "https://github.com/metehanulusoy/price-tracker-bot"
+  },
+  {
+    "id": "pdf-rag-app",
+    "category": "tooling",
+    "featured": false,
+    "date": "2026-03",
+    "title": { "tr": "PDF Soru-Cevap", "en": "PDF Question Answering" },
+    "summary": {
+      "tr": "Bir belge yükle, onunla ilgili sorular sor: RAG'in en yalın hâli.",
+      "en": "Upload a document and ask questions about it: RAG at its simplest."
+    },
+    "stack": ["LangChain", "OpenAI", "Python"],
+    "repo": "https://github.com/metehanulusoy/pdf-rag-app"
+  },
+  {
+    "id": "garbage-classifier",
+    "category": "ml",
+    "featured": false,
+    "date": "2026-03",
+    "title": { "tr": "Atık Sınıflandırıcı", "en": "Garbage Classifier" },
+    "summary": {
+      "tr": "Tarayıcıda transfer öğrenme: kamerayı atığa tut, altı malzeme sınıfından birini al.",
+      "en": "Transfer learning in the browser: point a camera at waste and get one of six material classes."
+    },
+    "stack": ["TensorFlow.js", "MobileNetV2", "JavaScript"],
+    "live": "https://metehanulusoy.github.io/garbage-classifier/",
+    "repo": "https://github.com/metehanulusoy/garbage-classifier"
+  },
+  {
+    "id": "mnist-digit-recognizer",
+    "category": "ml",
+    "featured": false,
+    "date": "2026-03",
+    "title": { "tr": "MNIST Rakam Tanıma", "en": "MNIST Digit Recognizer" },
+    "summary": {
+      "tr": "Her şeyin başladığı yer: sıfırdan bir sinir ağı, yaklaşık yüzde 98 doğruluk.",
+      "en": "Where it all started: a neural network from scratch, with about 98% accuracy."
+    },
+    "stack": ["TensorFlow", "Python"],
+    "live": "https://metehanulusoy.github.io/mnist-digit-recognizer/",
+    "repo": "https://github.com/metehanulusoy/mnist-digit-recognizer"
+  },
+  {
+    "id": "n8n-workflow-to-python",
+    "category": "tooling",
+    "featured": false,
+    "date": "2026-03",
+    "title": { "tr": "n8n → Python Dönüştürücü", "en": "n8n → Python Converter" },
+    "summary": {
+      "tr": "Görsel bir otomasyon akışını, bağımlılığı olmayan çalıştırılabilir Python koduna çeviren komut satırı aracı.",
+      "en": "A command-line tool that turns a visual automation workflow into runnable Python with no dependencies."
+    },
+    "stack": ["Python", "CLI"],
+    "live": "https://metehanulusoy.github.io/n8n-workflow-to-python/",
+    "repo": "https://github.com/metehanulusoy/n8n-workflow-to-python"
+  },
+  {
+    "id": "awesome-n8n-workflows",
+    "category": "tooling",
+    "featured": false,
+    "date": "2026-03",
+    "title": { "tr": "n8n Otomasyon Kütüphanesi", "en": "n8n Automation Library" },
+    "summary": {
+      "tr": "İçe aktarıp hemen çalıştırabileceğin 2.055 hazır n8n şablonu.",
+      "en": "2,055 production-ready n8n templates you can import and run straight away."
+    },
+    "stack": ["n8n", "LangChain", "OpenAI"],
+    "live": "https://metehanulusoy.github.io/awesome-n8n-workflows/",
+    "repo": "https://github.com/metehanulusoy/awesome-n8n-workflows"
+  }
+]
