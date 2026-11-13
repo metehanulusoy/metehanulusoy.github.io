@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <title data-i18n="meta.about.title">Hakkımda — Metehan Ulusoy</title>
+  <meta name="description" content="RTEÜ'de bilgisayar mühendisliği öğrencisi: buraya nasıl geldim, neler üzerinde çalışıyorum, hangi araçları kullanıyorum." data-i18n-attr="content:meta.about.description">
+  <meta name="theme-color" content="#0b0a09">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Instrument+Sans:wght@400..700&amp;family=Martian+Mono:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">İçeriğe geç</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Metehan Ulusoy, ana sayfa" data-i18n-attr="aria-label:nav.homeLabel">
+        <span class="brand-mark" aria-hidden="true">&#x10C00;&#x10C06;&#x10C23;&#x10C00;&#x10C3A;&#x10C45;&#x10C1A;</span>
+        <span class="brand-name">Metehan Ulusoy</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Ana menü" data-i18n-attr="aria-label:nav.label">
+        <ul class="nav-list">
+          <li><a href="index.html" data-i18n="nav.home">Ana sayfa</a></li>
+          <li><a href="about.html" aria-current="page" data-i18n="nav.about">Hakkımda</a></li>
+          <li><a href="projects.html" data-i18n="nav.projects">Projeler</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" type="button" data-lang-toggle lang="en" aria-label="Switch to English">EN</button>
+        <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Koyu tema" data-i18n-attr="aria-label:theme.label">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+        <button class="icon-button nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menüyü aç">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero shell" aria-labelledby="page-title">
+      <p class="eyebrow" data-i18n="about.eyebrow">Hakkımda</p>
+      <h1 id="page-title" data-i18n="about.title">Üç ayda yirmi proje</h1>
+    </section>
+
+    <div class="shell about-grid">
+      <div class="about-text">
+        <p data-i18n="about.p1">Recep Tayyip Erdoğan Üniversitesi'nde bilgisayar mühendisliği okuyorum, üçüncü sınıftayım. Otomasyonla başladım, makine öğrenmesiyle devam ettim; şimdi hem web ürünleri hem de arka uç servisleri yazıyorum.</p>
+        <p data-i18n="about.p2">Tek bir alana bağlı değilim. Beni ilgilendiren problemin kendisi: bir bankada risk skorlaması, bir sosyal platformun arkasındaki veri modeli ya da tek dosyalık bir komut satırı aracı.</p>
+        <p data-i18n="about.p3">Yazdığım her depoda aynı üç şeye bakarım: tip güvenliği, testler ve birinin gerçekten okuyabileceği bir README.</p>
+      </div>
+      <aside class="facts" aria-labelledby="facts-title">
+        <h2 class="eyebrow" id="facts-title" data-i18n="about.factsTitle">Kısaca</h2>
+        <dl class="fact-list">
+          <div>
+            <dt data-i18n="about.fact.study">Eğitim</dt>
+            <dd data-i18n="about.fact.studyValue">Bilgisayar Mühendisliği, 3. sınıf, RTEÜ</dd>
+          </div>
+          <div>
+            <dt data-i18n="about.fact.focus">Çalıştığım alanlar</dt>
+            <dd data-i18n="about.fact.focusValue">Web, makine öğrenmesi, arka uç servisleri, otomasyon</dd>
+          </div>
+          <div>
+            <dt data-i18n="about.fact.languages">Diller</dt>
+            <dd data-i18n="about.fact.languagesValue">Türkçe, İngilizce</dd>
+          </div>
+          <div>
+            <dt data-i18n="about.fact.location">Konum</dt>
+            <dd data-i18n="about.fact.locationValue">Trabzon, Türkiye</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+
+    <section class="section shell reveal" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="timeline.eyebrow">Zaman çizelgesi</p>
+        <h2 id="timeline-title" data-i18n="timeline.title">Buraya nasıl geldim</h2>
+        <p class="section-lede" data-i18n="timeline.lede">Her satır, gerçek bir tarihte açılmış gerçek bir depo.</p>
+      </div>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <article aria-labelledby="timeline-march">
+            <p class="timeline-date"><time datetime="2026-03" data-i18n="timeline.m1.date">Mart 2026</time></p>
+            <h3 id="timeline-march" data-i18n="timeline.m1.title">Otomasyon ve ilk modeller</h3>
+            <p data-i18n="timeline.m1.body">Bir şeyi anlamanın en hızlı yolu, bozulana kadar onu parçalarına ayırmak.</p>
+            <ul class="tag-list" aria-label="Depolar" data-i18n-attr="aria-label:timeline.reposLabel">
+              <li>awesome-n8n-workflows</li>
+              <li>n8n-workflow-to-python</li>
+              <li>mnist-digit-recognizer</li>
+              <li>garbage-classifier</li>
+              <li>pdf-rag-app</li>
+              <li>price-tracker-bot</li>
+            </ul>
+          </article>
+        </li>
+        <li class="timeline-item">
+          <article aria-labelledby="timeline-april">
+            <p class="timeline-date"><time datetime="2026-04" data-i18n="timeline.m2.date">Nisan 2026</time></p>
+            <h3 id="timeline-april" data-i18n="timeline.m2.title">Uygulamalı makine öğrenmesi</h3>
+            <p data-i18n="timeline.m2.body">Bankacılık problemleri. Doğruluk oranının tek başına hiçbir şey söylemediğini burada öğrendim.</p>
+            <ul class="tag-list" aria-label="Depolar" data-i18n-attr="aria-label:timeline.reposLabel">
+              <li>banking-chatbot-rag</li>
+              <li>fraud-detection-system</li>
+              <li>credit-risk-scoring</li>
+              <li>jarvis</li>
+            </ul>
+          </article>
+        </li>
+        <li class="timeline-item">
+          <article aria-labelledby="timeline-may">
+            <p class="timeline-date"><time datetime="2026-05" data-i18n="timeline.m3.date">Mayıs 2026</time></p>
+            <h3 id="timeline-may" data-i18n="timeline.m3.title">Servisler</h3>
+            <p data-i18n="timeline.m3.body">Üç haftada yedi servis: ağ geçidi, önbellek, gözlemlenebilirlik, CI kapısı.</p>
+            <ul class="tag-list" aria-label="Depolar" data-i18n-attr="aria-label:timeline.reposLabel">
+              <li>model-regression-detection</li>
+              <li>llm-cost-autopilot</li>
+              <li>failure-forensics</li>
+              <li>self-healing-docs</li>
+              <li>llm-arbitration</li>
+              <li>rag-hybrid-search</li>
+              <li>semantic-caching</li>
+              <li>myanimelist</li>
+              <li>bist-ai-yatirim-asistani</li>
+            </ul>
+          </article>
+        </li>
+        <li class="timeline-item">
+          <article aria-labelledby="timeline-summer">
+            <p class="timeline-date"><time datetime="2026-06" data-i18n="timeline.m4.from">Haziran</time> – <time datetime="2026-07" data-i18n="timeline.m4.to">Temmuz 2026</time></p>
+            <h3 id="timeline-summer" data-i18n="timeline.m4.title">Gerçek kullanıcıya dönük arayüzler</h3>
+            <p data-i18n="timeline.m4.body">Bir bölüm arşivi, bir yayın platformu çalışması ve üç konseptli bir tarım sitesi.</p>
+            <ul class="tag-list" aria-label="Depolar" data-i18n-attr="aria-label:timeline.reposLabel">
+              <li>ceng-arsiv</li>
+              <li>streamly</li>
+              <li>tarim-konseptleri</li>
+            </ul>
+            <figure class="timeline-figure">
+              <img src="img/projects/tarim-konseptleri.jpg" alt="Tarım Konseptleri seçim ekranı: Filiz, Ekinova ve Harman adlı üç konsept kartı" width="1200" height="750" loading="lazy" decoding="async" data-i18n-attr="alt:timeline.m4.figureAlt">
+              <figcaption data-i18n="timeline.m4.figureCaption">Tarım Konseptleri: tek kod tabanı üzerine kurulmuş üç tarım sitesi.</figcaption>
+            </figure>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section shell reveal" aria-labelledby="skills-title">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="skills.eyebrow">Araç kutusu</p>
+        <h2 id="skills-title" data-i18n="skills.title">Kullandığım araçlar</h2>
+      </div>
+      <div class="skills-grid">
+        <article class="skill-group" aria-labelledby="skills-languages">
+          <h3 id="skills-languages" data-i18n="skills.languages">Diller</h3>
+          <ul class="tag-list">
+            <li>Python</li>
+            <li>TypeScript</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>SQL</li>
+          </ul>
+        </article>
+        <article class="skill-group" aria-labelledby="skills-web">
+          <h3 id="skills-web" data-i18n="skills.web">Web</h3>
+          <ul class="tag-list">
+            <li>Next.js</li>
+            <li>React</li>
+            <li>Supabase</li>
+            <li>Tailwind CSS</li>
+            <li>Three.js</li>
+            <li>GSAP</li>
+          </ul>
+        </article>
+        <article class="skill-group" aria-labelledby="skills-backend">
+          <h3 id="skills-backend" data-i18n="skills.backend">Arka uç ve veri</h3>
+          <ul class="tag-list">
+            <li>FastAPI</li>
+            <li>Redis</li>
+            <li>PostgreSQL</li>
+            <li>Docker</li>
+            <li>Prometheus</li>
+            <li>OpenTelemetry</li>
+          </ul>
+        </article>
+        <article class="skill-group" aria-labelledby="skills-ml">
+          <h3 id="skills-ml" data-i18n="skills.ml">Makine öğrenmesi</h3>
+          <ul class="tag-list">
+            <li>scikit-learn</li>
+            <li>XGBoost</li>
+            <li>SHAP</li>
+            <li>TensorFlow</li>
+            <li>LangChain</li>
+            <li>ChromaDB</li>
+          </ul>
+        </article>
+        <article class="skill-group" aria-labelledby="skills-automation">
+          <h3 id="skills-automation" data-i18n="skills.automation">Otomasyon ve araçlar</h3>
+          <ul class="tag-list">
+            <li>n8n</li>
+            <li>GitHub Actions</li>
+            <li>Telegram Bot API</li>
+            <li>pytest</li>
+            <li>Ollama</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p class="footer-note" data-i18n="footer.built">Bu site çatı ya da kütüphane kullanmadan, yalnızca HTML, CSS ve JavaScript ile yazıldı.</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/metehanulusoy" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/metehanulusoy" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="mailto:metmete2003@gmail.com" data-i18n="footer.email">E-posta</a></li>
+      </ul>
+      <p class="footer-copy">© <span data-year>2026</span> Metehan Ulusoy</p>
+    </div>
+  </footer>
+</body>
+</html>
