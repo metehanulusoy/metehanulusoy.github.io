@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mailLink = form.querySelector("[data-mailto]");
   const copyButton = form.querySelector("[data-copy-message]");
   const copyStatus = form.querySelector("[data-copy-status]");
+  let lastCopyKey = ""; // remembered so the copy message can be translated later
 
   /* ---------- Validation ---------- */
 
@@ -153,6 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     updateCharCount();
     clearDraft();
+    // form.reset() fires no input event, so the confirmation is closed by hand.
+    successBox.hidden = true;
+    lastCopyKey = "";
+    copyStatus.textContent = "";
   }
 
   /* ---------- Submit ---------- */
@@ -182,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // The name comes from the visitor, so it goes in with textContent and is never parsed as HTML.
     successName.textContent = nameField.value.trim();
     mailLink.href = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    lastCopyKey = "";
     copyStatus.textContent = "";
     successBox.hidden = false;
     successBox.focus();
@@ -197,10 +203,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const { subject, body } = buildMessage();
     try {
       await navigator.clipboard.writeText(`${RECIPIENT}\n${subject}\n\n${body}`);
-      copyStatus.textContent = translate("contact.copied");
+      lastCopyKey = "contact.copied";
     } catch (error) {
-      copyStatus.textContent = translate("contact.copyFailed");
+      lastCopyKey = "contact.copyFailed";
     }
+    copyStatus.textContent = translate(lastCopyKey);
   });
 
   /* ---------- Feedback while typing ---------- */
@@ -228,11 +235,12 @@ document.addEventListener("DOMContentLoaded", () => {
     nameField.focus();
   });
 
-  // Errors already on screen are rewritten in the new language.
+  // Errors and the copy message already on screen are rewritten in the new language.
   document.addEventListener("languagechange", () => {
     fields.forEach((field) => {
       if (field.getAttribute("aria-invalid") === "true") validateField(field);
     });
+    if (lastCopyKey) copyStatus.textContent = translate(lastCopyKey);
   });
 
   restoreDraft();
